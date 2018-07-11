@@ -584,7 +584,7 @@ function registerChatBtn() {
                 playerRef.once("value").then(function (ds) {
 
                     var name = ds.val().name;
-                    chatRef.push({ name: name + ": ", msg: msg });
+                    chatRef.push({ name: "[" + name + "]: ", msg: msg });
 
                 });
             }
