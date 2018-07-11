@@ -21,6 +21,11 @@ db = firebase.database();
 //Players DB reference
 var playersRef = db.ref("multi-rps/players");
 
+
+//Chat DB reference
+var chatRef = db.ref("multi-rps/chat");
+
+
 //Player DB Ref
 var playerRef;
 
@@ -568,13 +573,46 @@ function listenForDroppedConnections() {
     }
 }
 
+function registerChatBtn() {
+    $("#chat_btn").on("click", function (ev) {
+        ev.preventDefault();
+        var msg = $("#chat_msg").val().trim();
+        $("#chat_msg").val("");
+        if (msg) {
+
+            if (playerRef) {
+                playerRef.once("value").then(function (ds) {
+
+                    var name = ds.val().name;
+                    chatRef.push({ name: name + ": ", msg: msg });
+
+                });
+            }
+            else {
+                chatRef.push({ name: "Anonymous: ", msg: msg });
+            }
+
+        }
+    });
+}
+
+function loadChat() {
+
+    chatRef.orderByKey().limitToLast(20).on("child_added", function (ds) {
+        console.log("new message");
+        $("#chat_log").val($("#chat_log").val() + "\n" + ds.val().name + ds.val().msg);
+    });
+
+}
+
 function newGame() {
     printPlayerStatus();
     listenForConnections();
+    registerChatBtn();
+    loadChat();
 }
 
 $(document).ready(function () {
-
     newGame();
 
 });

@@ -26,7 +26,7 @@ body {
     color: blue;
 }
 .player_card {
-    border: none;
+    border: none;min-height: 10rem;
 }
 
 .join {
@@ -40,4 +40,19 @@ body {
 
 .player_losses {
     padding-left: 2rem;
+}
+
+#chat_log {
+   
+    max-width: 34rem;
+    height: 10rem;
+    width: 66%
+}
+
+
+#chat_msg {
+       
+    /* max-width: 34rem; */
+    width: 55%;
+    max-width: 30rem;
 }
