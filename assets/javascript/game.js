@@ -115,7 +115,7 @@ function printJoin() {
 }
 
 function printWaitingPlayer(playerNum) {
-    var div = "<div class='card player_card'>" +
+    var div = "<div class='card player_card bg-transparent'>" +
         "<div class='card-body'>" +
         "<h4 class='card-title'>Waiting for Player " + playerNum + "</h4>" +
         "</div></div>";

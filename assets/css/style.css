@@ -5,6 +5,15 @@
 *June 2018                                    *
 ***********************************************/
 
+body {
+    background-image: linear-gradient(to right, #ffc3a0,#868f96);
+}
+.container-fluid {
+    border-style: dashed;
+    border-width: .5rem;
+    border-color: gold;
+}
+
 #status {
     height: 8rem;
 }
