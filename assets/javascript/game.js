@@ -601,6 +601,7 @@ function loadChat() {
     chatRef.orderByKey().limitToLast(20).on("child_added", function (ds) {
         console.log("new message");
         $("#chat_log").val($("#chat_log").val() + "\n" + ds.val().name + ds.val().msg);
+        $("#chat_log").scrollTop($("#chat_log").prop("scrollHeight"));
     });
 
 }
